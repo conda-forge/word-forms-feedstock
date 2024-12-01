@@ -6,24 +6,26 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/word_forms-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/word_forms-{{ version }}.tar.gz
   sha256: 24df11f8db1a1305fa386689a080cfcd2e14458c4f31dde262c7938a45b87f74
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 2
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - inflect >=4.1.0
     - nltk >=3.3
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - word_forms
 
