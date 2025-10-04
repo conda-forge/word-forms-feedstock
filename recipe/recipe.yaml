@@ -1,8 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
 schema_version: 1
 
 context:
   name: word-forms
-  version: 2.1.0
+  version: "2.1.0"
 
 package:
   name: ${{ name|lower }}
@@ -22,7 +23,7 @@ requirements:
     - python ${{ python_min }}.*
     - pip
   run:
-    - python >=${{ python_min }}
+    - python >=${{ python_min }},<4.0
     - inflect >=4.1.0
     - nltk >=3.3
 
